@@ -16,10 +16,11 @@ import { APP_GUARD } from '@nestjs/core';
 import { AuthGuard } from './auth.guard';
 import { FileModule } from './file/file.module';
 import { MinioModule } from './minio/minio.module';
+import * as path from 'path';
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb://localhost:27017/editor-backend'),
+    MongooseModule.forRoot('mongodb://mongo-container:27017/editor-backend'),
 
     JwtModule.registerAsync({
       global: true,
@@ -35,7 +36,7 @@ import { MinioModule } from './minio/minio.module';
     }),
     ConfigModule.forRoot({
       isGlobal: true,
-      envFilePath: 'src/.env',
+      envFilePath: path.join(__dirname, '.env'),
     }),
     UserModule,
     DogModule,
