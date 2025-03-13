@@ -17,9 +17,7 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json",
-    "build:webpack": "npx webpack --config webpack/webpack.config.js"
-  },
+    "test:e2e": "jest --config ./test/jest-e2e.json"  },
   "dependencies": {
     "@alicloud/dysmsapi20170525": "^3.0.0",
     "@alicloud/openapi-client": "^0.4.11",
