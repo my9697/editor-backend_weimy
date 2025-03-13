@@ -1,0 +1,42 @@
+version: '3.8'
+services:
+  minio:
+    image: bitnami/minio
+    volumes:
+      - D:\myCode\myProgram\lowCode\editor-backend\src:/var/lib/minio
+    ports:
+      - 9000:9000
+    environment:
+      - MINIO_ACCESS_KEY=slyrTL8Lx6xtTDJLjPaX
+      - MINIO_SECRET_KEY=8V7n95naJptZ0wmjJKH7daBSNusZQlS0qc3HFjFv
+    networks:
+      - common-network
+
+  nest-app:
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+    depends_on:
+      - redis-container
+      - mongo-container
+    ports:
+      - 3005:3005
+    networks:
+      - common-network
+  redis-container:
+    image: redis
+    volumes:
+      - D:\myCode\myProgram\lowCode\editor-backend\src:/var/lib/redis
+    environment:
+      - REDIS_PASSWORD=123456
+    networks:
+      - common-network
+  mongo-container:
+    image: mongo
+    volumes:
+      - D:\myCode\myProgram\lowCode\editor-backend\src:/data
+    networks:
+      - common-network
+networks:
+  common-network:
+    driver: bridge
