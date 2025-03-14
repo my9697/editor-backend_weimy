@@ -3,7 +3,7 @@ services:
   minio:
     image: bitnami/minio
     volumes:
-      - D:\myCode\myProgram\lowCode\editor-backend\src:/var/lib/minio
+      - //D/myCode/myProgram/lowCode/editor-backend/src:/var/lib/monio
     ports:
       - 9000:9000
     environment:
@@ -26,7 +26,7 @@ services:
   redis-container:
     image: redis
     volumes:
-      - D:\myCode\myProgram\lowCode\editor-backend\src:/var/lib/redis
+      - //D/myCode/myProgram/lowCode/editor-backend/src:/var/lib/redis
     environment:
       - REDIS_PASSWORD=123456
     networks:
@@ -34,7 +34,7 @@ services:
   mongo-container:
     image: mongo
     volumes:
-      - D:\myCode\myProgram\lowCode\editor-backend\src:/data
+      - //D/myCode/myProgram/lowCode/editor-backend/src:/var/lib/data
     networks:
       - common-network
 networks:
