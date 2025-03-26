@@ -27,8 +27,8 @@ services:
     depends_on:
       - redis-container
       - mongo-container
-    ports:
-      - 3005:3005
+    # ports:
+    #   - 3005:3005
     networks:
       - common-network
   redis-container:
