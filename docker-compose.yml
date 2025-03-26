@@ -1,13 +1,5 @@
 # version: '3.8'
 services:
-  fe-app:
-    image: crpi-c1o0rojjmjishco0.cn-hangzhou.personal.cr.aliyuncs.com/weimy/weimy_969:first
-    ports:
-      - 80:80
-    depends_on:
-      - nest-app
-    networks:
-      - common-network
   minio:
     image: bitnami/minio
     volumes:
@@ -27,10 +19,20 @@ services:
     depends_on:
       - redis-container
       - mongo-container
-    # ports:
-    #   - 3005:3005
+    ports:
+      - 3005:3005
     networks:
       - common-network
+
+  fe-app:
+    image: crpi-c1o0rojjmjishco0.cn-hangzhou.personal.cr.aliyuncs.com/weimy/weimy_969:first
+    ports:
+      - 80:80
+    depends_on:
+      - nest-app
+    networks:
+      - common-network
+
   redis-container:
     image: redis
     volumes:
